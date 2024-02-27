@@ -1,0 +1,7 @@
+.idea
+target
+*.iml
+*.DS_Store
+logs/
+hbos-stc-starter/src/main/resources/rebel.xml
+**/.flowclasses/**
