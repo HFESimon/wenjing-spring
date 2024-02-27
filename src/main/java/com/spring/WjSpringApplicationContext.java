@@ -43,6 +43,7 @@ public class WjSpringApplicationContext {
         // 扫描
         scan(configClass);
 
+        // 创建单例bean
         for (Map.Entry<String, BeanDefinition> entry : beanDefinitionMap.entrySet()) {
             String beanName = entry.getKey();
             BeanDefinition beanDefinition = entry.getValue();
@@ -57,7 +58,11 @@ public class WjSpringApplicationContext {
     }
 
 
-
+    /**
+     * 从 context 中获取bean
+     * @param beanName
+     * @return
+     */
     public Object getBean(String beanName){
         // beanName --> Bean
         if (!beanDefinitionMap.containsKey(beanName)) {
@@ -102,7 +107,7 @@ public class WjSpringApplicationContext {
     }
 
     /**
-     * 扫描
+     * 扫描配置类配置的包结构下的所有class并创建
      * @param configClass
      */
     private void scan(Class<AppConfig> configClass) {
@@ -158,7 +163,6 @@ public class WjSpringApplicationContext {
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
-
                 }
             }
         }
