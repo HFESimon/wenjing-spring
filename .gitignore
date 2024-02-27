@@ -1,7 +1,45 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+**/target/
+rebel.xml
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
 .idea
-target
+*.iws
 *.iml
-*.DS_Store
-logs/
-hbos-stc-starter/src/main/resources/rebel.xml
-**/.flowclasses/**
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+.DS_Store
+
+### 工作流
+.flowclasses/
+.flowclasses/**
+*.lock
+gc.properties
+last-build.bin
+
+/hbos-charge-starter/.flowclasses/
