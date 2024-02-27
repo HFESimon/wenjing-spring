@@ -1,6 +1,8 @@
 package com.wenjing.service;
 
 import com.spring.annotation.Component;
+import com.spring.annotation.Scope;
+import com.spring.base.BeanDefinition;
 
 /**
  * @author wenjing.zsm
@@ -11,6 +13,7 @@ import com.spring.annotation.Component;
  */
 
 @Component("userService")
+@Scope(BeanDefinition.ScopeType.PROTOTYPE)
 public class UserService {
 
     public void test() {

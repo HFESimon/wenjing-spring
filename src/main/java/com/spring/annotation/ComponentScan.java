@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * @author wenjing.zsm
  * @version 1.0
  * @title:
- * @description:
+ * @description: 扫描路径
  * @since 2024/2/28 12:45 上午
  */
 

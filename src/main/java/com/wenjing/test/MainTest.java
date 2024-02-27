@@ -1,6 +1,6 @@
 package com.wenjing.test;
 
-import com.spring.SpringApplicationContext;
+import com.spring.WjSpringApplicationContext;
 import com.wenjing.config.AppConfig;
 import com.wenjing.service.UserService;
 
@@ -17,9 +17,10 @@ public class MainTest {
     public static void main(String[] args) {
 
         // 扫描 --> 创建单例 Bean
-        SpringApplicationContext springApplicationContext = new SpringApplicationContext(AppConfig.class);
+        WjSpringApplicationContext wjSpringApplicationContext = new WjSpringApplicationContext(AppConfig.class);
 
-        UserService userService = (UserService) springApplicationContext.getBean("userService");
-        userService.test();
+        System.out.println(wjSpringApplicationContext.getBean("userService"));
+        System.out.println(wjSpringApplicationContext.getBean("userService"));
+        System.out.println(wjSpringApplicationContext.getBean("userService"));
     }
 }
