@@ -5,6 +5,7 @@ import com.spring.annotation.Component;
 import com.spring.annotation.Scope;
 import com.spring.beans.BeanDefinition;
 import com.spring.beans.factory.InitializingBean;
+import com.wenjing.annotation.WenjingValue;
 
 /**
  * @author wenjing.zsm
@@ -21,8 +22,11 @@ public class UserService implements InitializingBean {
     @Autowired
     private OrderService orderService;
 
+    @WenjingValue("test")
+    private String name;
+
     public void test() {
-        System.out.println(this);
+        System.out.println(name);
     }
 
     @Override

@@ -124,12 +124,17 @@ public class WjSpringApplicationContext {
                 }
             }
 
+            // BeanPostProcessor —— before
+            for (BeanPostProcessor processor : beanPostProcessors) {
+                instance = processor.postProcessBeforeInitialization(instance, beanName);
+            }
+
             // initializingBean
             if (instance instanceof InitializingBean) {
                 ((InitializingBean) instance).afterPropertiesSet();
             }
 
-            // BeanPostProcessor
+            // BeanPostProcessor —— after
             for (BeanPostProcessor processor : beanPostProcessors) {
                 // 可用来实现 AOP
                 instance = processor.postProcessAfterInitialization(instance, beanName);
