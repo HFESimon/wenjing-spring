@@ -1,12 +1,15 @@
 package com.spring;
 
+import com.spring.annotation.Autowired;
 import com.spring.annotation.Component;
 import com.spring.annotation.ComponentScan;
 import com.spring.annotation.Scope;
 import com.spring.base.BeanDefinition;
 import com.wenjing.config.AppConfig;
 
+import java.beans.Introspector;
 import java.io.File;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.HashMap;
@@ -73,7 +76,13 @@ public class WjSpringApplicationContext {
 
         if (beanDefinition.getScope().equals(BeanDefinition.ScopeType.SINGLETON)) {
             // 单例
-            return singletonObjects.get(beanName);
+            Object singletonBean = singletonObjects.get(beanName);
+            // 依赖注入的时候可能单例Bean由于创建顺序问题在单例池中没有
+            if (singletonBean == null) {
+                singletonBean = createBean(beanName, beanDefinition);
+                singletonObjects.put(beanName, singletonBean);
+            }
+            return singletonBean;
         } else {
             // 原型
             return createBean(beanName, beanDefinition);
@@ -92,7 +101,20 @@ public class WjSpringApplicationContext {
         Object instance = null;
 
         try {
+            // 获取无参构造并构造普通对象
             instance = clazz.getConstructor().newInstance();
+
+            // 依赖注入
+            for (Field field : clazz.getDeclaredFields()) {
+                // 有@Autowired注解`
+                if (field.isAnnotationPresent(Autowired.class)) {
+                    // 反射
+                    field.setAccessible(true);
+                    // 注入bean对象(注：spring是先getByType再getByName的，这里为了实现简单直接根据属性名去找bean了)
+                    field.set(instance, getBean(field.getName()));
+                }
+            }
+
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -141,8 +163,7 @@ public class WjSpringApplicationContext {
                         if (clazz.isAnnotationPresent(Component.class)) {
 
                             // 从 Component 注解中拿到 BeanName
-                            Component componentAnnotation = clazz.getAnnotation(Component.class);
-                            String beanName = componentAnnotation.value();
+                            String beanName = generateBeanName(clazz);
 
                             // 构造 BeanDefinition
                             BeanDefinition beanDefinition = new BeanDefinition();
@@ -166,5 +187,22 @@ public class WjSpringApplicationContext {
                 }
             }
         }
+    }
+
+    /**
+     * 计算beanName
+     * @param clazz
+     * @return
+     */
+    public String generateBeanName(Class<?> clazz) {
+        // 从 Component 注解中拿到 BeanName
+        Component componentAnnotation = clazz.getAnnotation(Component.class);
+        String beanName = componentAnnotation.value();
+
+        if (!"".equals(beanName)) {
+            return beanName;
+        }
+        // 生成默认名字
+        return Introspector.decapitalize(clazz.getSimpleName());
     }
 }

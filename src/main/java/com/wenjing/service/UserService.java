@@ -1,5 +1,6 @@
 package com.wenjing.service;
 
+import com.spring.annotation.Autowired;
 import com.spring.annotation.Component;
 import com.spring.annotation.Scope;
 import com.spring.base.BeanDefinition;
@@ -16,7 +17,10 @@ import com.spring.base.BeanDefinition;
 @Scope(BeanDefinition.ScopeType.PROTOTYPE)
 public class UserService {
 
+    @Autowired
+    private OrderService orderService;
+
     public void test() {
-        System.out.println("test");
+        System.out.println(orderService);
     }
 }

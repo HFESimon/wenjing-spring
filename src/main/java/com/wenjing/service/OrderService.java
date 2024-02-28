@@ -10,6 +10,7 @@ import com.spring.annotation.Component;
  * @since 2024/2/28 12:38 上午
  */
 
+@Component
 public class OrderService {
 
     public void test() {

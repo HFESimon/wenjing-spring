@@ -19,8 +19,7 @@ public class MainTest {
         // 扫描 --> 创建单例 Bean
         WjSpringApplicationContext wjSpringApplicationContext = new WjSpringApplicationContext(AppConfig.class);
 
-        System.out.println(wjSpringApplicationContext.getBean("userService"));
-        System.out.println(wjSpringApplicationContext.getBean("userService"));
-        System.out.println(wjSpringApplicationContext.getBean("userService"));
+        UserService userService = (UserService) wjSpringApplicationContext.getBean("userService");
+        userService.test();
     }
 }
