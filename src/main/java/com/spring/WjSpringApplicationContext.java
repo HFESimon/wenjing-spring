@@ -5,6 +5,7 @@ import com.spring.annotation.Component;
 import com.spring.annotation.ComponentScan;
 import com.spring.annotation.Scope;
 import com.spring.beans.BeanDefinition;
+import com.spring.beans.factory.BeanNameAware;
 import com.spring.beans.factory.BeanPostProcessor;
 import com.spring.beans.factory.InitializingBean;
 import com.wenjing.config.AppConfig;
@@ -122,6 +123,11 @@ public class WjSpringApplicationContext {
                     // 注入bean对象(注：spring是先getByType再getByName的，这里为了实现简单直接根据属性名去找bean了)
                     field.set(instance, getBean(field.getName()));
                 }
+            }
+
+            // Aware
+            if (instance instanceof BeanNameAware) {
+                ((BeanNameAware) instance).setBeanName(beanName);
             }
 
             // BeanPostProcessor —— before

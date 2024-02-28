@@ -1,6 +1,7 @@
 package com.wenjing.service;
 
 import com.spring.annotation.Component;
+import com.spring.beans.factory.BeanNameAware;
 
 /**
  * @author wenjing.zsm
@@ -11,10 +12,20 @@ import com.spring.annotation.Component;
  */
 
 @Component
-public class OrderService implements OrderInterface {
+public class OrderService implements OrderInterface, BeanNameAware {
+
+    /**
+     * beanName
+     */
+    private String beanName;
 
     @Override
     public void test() {
         System.out.println("test");
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        this.beanName = name;
     }
 }
