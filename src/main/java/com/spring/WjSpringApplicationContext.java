@@ -5,15 +5,17 @@ import com.spring.annotation.Component;
 import com.spring.annotation.ComponentScan;
 import com.spring.annotation.Scope;
 import com.spring.beans.BeanDefinition;
+import com.spring.beans.factory.BeanPostProcessor;
 import com.spring.beans.factory.InitializingBean;
 import com.wenjing.config.AppConfig;
 
 import java.beans.Introspector;
 import java.io.File;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,6 +42,12 @@ public class WjSpringApplicationContext {
      * 单例池
      */
     private Map<String, Object> singletonObjects = new HashMap<>();
+
+    /**
+     * bean后置处理器
+     */
+    List<BeanPostProcessor> beanPostProcessors = new LinkedList<>();
+
 
     public WjSpringApplicationContext(Class<com.wenjing.config.AppConfig> configClass) {
         this.configClass = configClass;
@@ -122,6 +130,10 @@ public class WjSpringApplicationContext {
             }
 
             // BeanPostProcessor
+            for (BeanPostProcessor processor : beanPostProcessors) {
+                // 可用来实现 AOP
+                instance = processor.postProcessAfterInitialization(instance, beanName);
+            }
 
 
         } catch (Exception e) {
@@ -165,6 +177,13 @@ public class WjSpringApplicationContext {
                         // 判断有没有 Component 注解
                         if (clazz.isAnnotationPresent(Component.class)) {
 
+                            // 判断类有没有实现 BeanPostProcessor 接口
+                            if (BeanPostProcessor.class.isAssignableFrom(clazz)) {
+                                // BeanPostProcessor
+                                BeanPostProcessor postProcessor = (BeanPostProcessor) clazz.getConstructor().newInstance();
+                                beanPostProcessors.add(postProcessor);
+                            }
+
                             // 从 Component 注解中拿到 BeanName
                             String beanName = generateBeanName(clazz);
 
@@ -184,7 +203,7 @@ public class WjSpringApplicationContext {
                             beanDefinitionMap.put(beanName, beanDefinition);
                             // 创建 Bean
                         }
-                    } catch (ClassNotFoundException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }

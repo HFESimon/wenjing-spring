@@ -11,8 +11,9 @@ import com.spring.annotation.Component;
  */
 
 @Component
-public class OrderService {
+public class OrderService implements OrderInterface {
 
+    @Override
     public void test() {
         System.out.println("test");
     }

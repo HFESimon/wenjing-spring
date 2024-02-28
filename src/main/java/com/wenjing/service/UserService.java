@@ -22,7 +22,7 @@ public class UserService implements InitializingBean {
     private OrderService orderService;
 
     public void test() {
-        System.out.println(orderService);
+        System.out.println(this);
     }
 
     @Override

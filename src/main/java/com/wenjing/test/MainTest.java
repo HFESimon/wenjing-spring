@@ -2,6 +2,7 @@ package com.wenjing.test;
 
 import com.spring.WjSpringApplicationContext;
 import com.wenjing.config.AppConfig;
+import com.wenjing.service.OrderInterface;
 import com.wenjing.service.UserService;
 
 /**
@@ -21,5 +22,8 @@ public class MainTest {
 
         UserService userService = (UserService) wjSpringApplicationContext.getBean("userService");
         userService.test();
+
+        OrderInterface orderInterface = (OrderInterface) wjSpringApplicationContext.getBean("orderService");
+        orderInterface.test();
     }
 }
