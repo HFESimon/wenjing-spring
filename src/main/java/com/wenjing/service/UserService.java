@@ -3,7 +3,8 @@ package com.wenjing.service;
 import com.spring.annotation.Autowired;
 import com.spring.annotation.Component;
 import com.spring.annotation.Scope;
-import com.spring.base.BeanDefinition;
+import com.spring.beans.BeanDefinition;
+import com.spring.beans.factory.InitializingBean;
 
 /**
  * @author wenjing.zsm
@@ -15,12 +16,17 @@ import com.spring.base.BeanDefinition;
 
 @Component("userService")
 @Scope(BeanDefinition.ScopeType.PROTOTYPE)
-public class UserService {
+public class UserService implements InitializingBean {
 
     @Autowired
     private OrderService orderService;
 
     public void test() {
         System.out.println(orderService);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("initializing bean");
     }
 }

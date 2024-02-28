@@ -4,7 +4,8 @@ import com.spring.annotation.Autowired;
 import com.spring.annotation.Component;
 import com.spring.annotation.ComponentScan;
 import com.spring.annotation.Scope;
-import com.spring.base.BeanDefinition;
+import com.spring.beans.BeanDefinition;
+import com.spring.beans.factory.InitializingBean;
 import com.wenjing.config.AppConfig;
 
 import java.beans.Introspector;
@@ -115,13 +116,15 @@ public class WjSpringApplicationContext {
                 }
             }
 
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
+            // initializingBean
+            if (instance instanceof InitializingBean) {
+                ((InitializingBean) instance).afterPropertiesSet();
+            }
+
+            // BeanPostProcessor
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
