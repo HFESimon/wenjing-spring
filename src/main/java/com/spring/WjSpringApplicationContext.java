@@ -57,20 +57,9 @@ public class WjSpringApplicationContext {
         scan(configClass);
 
         // 创建单例bean
-        for (Map.Entry<String, BeanDefinition> entry : beanDefinitionMap.entrySet()) {
-            String beanName = entry.getKey();
-            BeanDefinition beanDefinition = entry.getValue();
-            if (beanDefinition.getScope().equals(BeanDefinition.ScopeType.SINGLETON)) {
-                // 单例
-                Object bean = createBean(beanName, beanDefinition);
-                singletonObjects.put(beanName, bean);
-            } else {
-                // 原型
-            }
-        }
+        createBean();
     }
-
-
+    
     /**
      * 从 context 中获取bean
      * @param beanName
@@ -89,13 +78,30 @@ public class WjSpringApplicationContext {
             Object singletonBean = singletonObjects.get(beanName);
             // 依赖注入的时候可能单例Bean由于创建顺序问题在单例池中没有
             if (singletonBean == null) {
-                singletonBean = createBean(beanName, beanDefinition);
+                singletonBean = doCreateBean(beanName, beanDefinition);
                 singletonObjects.put(beanName, singletonBean);
             }
             return singletonBean;
         } else {
             // 原型
-            return createBean(beanName, beanDefinition);
+            return doCreateBean(beanName, beanDefinition);
+        }
+    }
+
+    /**
+     * 创建单例bean
+     */
+    private void createBean() {
+        for (Map.Entry<String, BeanDefinition> entry : beanDefinitionMap.entrySet()) {
+            String beanName = entry.getKey();
+            BeanDefinition beanDefinition = entry.getValue();
+            if (beanDefinition.getScope().equals(BeanDefinition.ScopeType.SINGLETON)) {
+                // 单例
+                Object bean = doCreateBean(beanName, beanDefinition);
+                singletonObjects.put(beanName, bean);
+            } else {
+                // 原型
+            }
         }
     }
 
@@ -105,7 +111,7 @@ public class WjSpringApplicationContext {
      * @param beanDefinition
      * @return
      */
-    private Object createBean(String beanName, BeanDefinition beanDefinition) {
+    private Object doCreateBean(String beanName, BeanDefinition beanDefinition) {
         Class clazz = beanDefinition.getType();
 
         Object instance = null;
