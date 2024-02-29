@@ -59,7 +59,7 @@ public class WjSpringApplicationContext {
         // 创建单例bean
         createBean();
     }
-    
+
     /**
      * 从 context 中获取bean
      * @param beanName
@@ -99,8 +99,6 @@ public class WjSpringApplicationContext {
                 // 单例
                 Object bean = doCreateBean(beanName, beanDefinition);
                 singletonObjects.put(beanName, bean);
-            } else {
-                // 原型
             }
         }
     }
@@ -120,7 +118,7 @@ public class WjSpringApplicationContext {
             // 获取无参构造并构造普通对象
             instance = clazz.getConstructor().newInstance();
 
-            // 依赖注入
+            // 依赖注入(spring 的依赖注入也是通过postProcessor来实现的，这里为了简单直接遍历属性了)
             for (Field field : clazz.getDeclaredFields()) {
                 // 有@Autowired注解`
                 if (field.isAnnotationPresent(Autowired.class)) {
@@ -199,26 +197,25 @@ public class WjSpringApplicationContext {
                                 // BeanPostProcessor
                                 BeanPostProcessor postProcessor = (BeanPostProcessor) clazz.getConstructor().newInstance();
                                 beanPostProcessors.add(postProcessor);
-                            }
-
-                            // 从 Component 注解中拿到 BeanName
-                            String beanName = generateBeanName(clazz);
-
-                            // 构造 BeanDefinition
-                            BeanDefinition beanDefinition = new BeanDefinition();
-                            beanDefinition.setType(clazz);
-
-                            // 从 scope 注解中拿到 Bean 类型
-                            if (clazz.isAnnotationPresent(Scope.class)) {
-                                Scope scopeAnnotation = clazz.getAnnotation(Scope.class);
-                                String scope = scopeAnnotation.value();
-                                beanDefinition.setScope(scope);
                             } else {
-                                // 单例
-                                beanDefinition.setScope(BeanDefinition.ScopeType.SINGLETON);
+                                // 从 Component 注解中拿到 BeanName
+                                String beanName = generateBeanName(clazz);
+
+                                // 构造 BeanDefinition
+                                BeanDefinition beanDefinition = new BeanDefinition();
+                                beanDefinition.setType(clazz);
+
+                                // 从 scope 注解中拿到 Bean 类型
+                                if (clazz.isAnnotationPresent(Scope.class)) {
+                                    Scope scopeAnnotation = clazz.getAnnotation(Scope.class);
+                                    String scope = scopeAnnotation.value();
+                                    beanDefinition.setScope(scope);
+                                } else {
+                                    // 单例
+                                    beanDefinition.setScope(BeanDefinition.ScopeType.SINGLETON);
+                                }
+                                beanDefinitionMap.put(beanName, beanDefinition);
                             }
-                            beanDefinitionMap.put(beanName, beanDefinition);
-                            // 创建 Bean
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

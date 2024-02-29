@@ -19,8 +19,8 @@ import com.wenjing.annotation.WenjingValue;
 @Scope(BeanDefinition.ScopeType.PROTOTYPE)
 public class UserService implements InitializingBean {
 
-    @Autowired
-    private OrderService orderService;
+//    @Autowired
+//    private OrderService orderService;
 
     @WenjingValue("test")
     private String name;
