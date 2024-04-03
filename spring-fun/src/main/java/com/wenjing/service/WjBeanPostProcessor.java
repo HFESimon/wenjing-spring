@@ -2,9 +2,7 @@ package com.wenjing.service;
 
 import com.spring.annotation.Component;
 import com.spring.beans.factory.BeanPostProcessor;
-import com.wenjing.annotation.WenjingValue;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;

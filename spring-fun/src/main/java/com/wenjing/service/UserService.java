@@ -1,6 +1,5 @@
 package com.wenjing.service;
 
-import com.spring.annotation.Autowired;
 import com.spring.annotation.Component;
 import com.spring.annotation.Scope;
 import com.spring.beans.BeanDefinition;

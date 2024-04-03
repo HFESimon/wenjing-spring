@@ -50,7 +50,7 @@ public class WjSpringApplicationContext {
     List<BeanPostProcessor> beanPostProcessors = new LinkedList<>();
 
 
-    public WjSpringApplicationContext(Class<com.wenjing.config.AppConfig> configClass) {
+    public WjSpringApplicationContext(Class<AppConfig> configClass) {
         this.configClass = configClass;
 
         // 扫描
