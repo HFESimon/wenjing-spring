@@ -1,10 +1,9 @@
-package com.netty.split.handler;
+package com.netty.splitpackage.handler;
 
-import com.netty.split.dto.MyMessagePackage;
+import com.netty.splitpackage.dto.MyMessagePackage;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.MessageToMessageDecoder;
 
 import java.util.List;
 

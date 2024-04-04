@@ -1,4 +1,4 @@
-package com.netty.split.dto;
+package com.netty.splitpackage.dto;
 
 import lombok.Data;
 

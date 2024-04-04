@@ -1,6 +1,6 @@
-package com.netty.split.handler;
+package com.netty.splitpackage.handler;
 
-import com.netty.split.dto.MyMessagePackage;
+import com.netty.splitpackage.dto.MyMessagePackage;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;

@@ -1,8 +1,7 @@
-package com.netty.split;
+package com.netty.splitpackage;
 
-import com.netty.split.handler.MyMessageDecoder;
-import com.netty.split.handler.MyMessageEncoder;
-import com.netty.split.handler.MyServerHandler;
+import com.netty.splitpackage.handler.MyMessageDecoder;
+import com.netty.splitpackage.handler.MyServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

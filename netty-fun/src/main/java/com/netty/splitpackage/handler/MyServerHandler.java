@@ -1,6 +1,6 @@
-package com.netty.split.handler;
+package com.netty.splitpackage.handler;
 
-import com.netty.split.dto.MyMessagePackage;
+import com.netty.splitpackage.dto.MyMessagePackage;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
@@ -17,10 +17,10 @@ public class MyServerHandler extends SimpleChannelInboundHandler<MyMessagePackag
     private int count = 0;
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, MyMessagePackage msg) throws Exception {
-        System.out.println("server receive message !");
-        System.out.println("server receive length: " + msg.getLen());
-        System.out.println("server receive msg: " + new String(msg.getContent(), CharsetUtil.UTF_8));
-        System.out.println("server receive count: " + ++count);
+        System.out.println("server receive message!");
+        System.out.println("length: " + msg.getLen());
+        System.out.println("msg: " + new String(msg.getContent(), CharsetUtil.UTF_8));
+        System.out.println("count: " + ++count);
     }
 
     @Override

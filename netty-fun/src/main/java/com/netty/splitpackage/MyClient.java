@@ -1,9 +1,7 @@
-package com.netty.split;
+package com.netty.splitpackage;
 
-import com.netty.chat.handler.ChatClientHandler;
-import com.netty.split.handler.MyClientHandler;
-import com.netty.split.handler.MyMessageDecoder;
-import com.netty.split.handler.MyMessageEncoder;
+import com.netty.splitpackage.handler.MyClientHandler;
+import com.netty.splitpackage.handler.MyMessageEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -12,8 +10,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 
 import java.util.Scanner;
 
