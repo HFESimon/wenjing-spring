@@ -1,6 +1,6 @@
-package com.netty.demmo;
+package com.netty.demo;
 
-import com.netty.demmo.handler.DemoNettyServerHandler;
+import com.netty.demo.handler.DemoNettyServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
