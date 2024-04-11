@@ -12,6 +12,7 @@
     <modules>
         <module>netty-fun</module>
         <module>spring-fun</module>
+        <module>rocketmq-fun</module>
     </modules>
 
     <properties>
