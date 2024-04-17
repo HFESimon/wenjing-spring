@@ -26,4 +26,21 @@ public class TestABC {
             LockConditionABC.printC();
         }, "thread_c").start();
     }
+
+    @Test
+    public void testABC10() {
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                LockConditionABC.printA();
+            }, "thread_a").start();
+
+            new Thread(() -> {
+                LockConditionABC.printB();
+            }, "thread_b").start();
+
+            new Thread(() -> {
+                LockConditionABC.printC();
+            }, "thread_c").start();
+        }
+    }
 }
