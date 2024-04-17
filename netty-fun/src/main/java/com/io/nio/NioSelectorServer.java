@@ -51,14 +51,16 @@ public class NioSelectorServer {
                     // 这里只注册了读事件，如果需要给客户端发送数据可以注册写事件
                     socketChannel.register(selector, SelectionKey.OP_READ);
                     System.out.println("客户端连接成功");
-                } else if (key.isReadable()) {  // 如果是OP_READ事件，则进行读取和打印
+                } else if (key.isReadable()) {
+                    // 如果是OP_READ事件，则进行读取和打印
                     SocketChannel socketChannel = (SocketChannel) key.channel();
                     ByteBuffer byteBuffer = ByteBuffer.allocate(128);
                     int len = socketChannel.read(byteBuffer);
                     // 如果有数据，把数据打印出来
                     if (len > 0) {
                         System.out.println("接收到消息：" + new String(byteBuffer.array()));
-                    } else if (len == -1) { // 如果客户端断开连接，关闭Socket
+                    } else if (len == -1) {
+                        // 如果客户端断开连接，关闭Socket
                         System.out.println("客户端断开连接");
                         socketChannel.close();
                     }
