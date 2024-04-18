@@ -2,7 +2,7 @@
 
 ### 一些娱乐活动
 
-dubbo-fun --> 手写模拟 Dubbo rpc框架
+dubbo-fun --> 手写模拟 Dubbo rpc框架(这个依赖zookeeper,本地要起zk服务)
 
 netty-fun --> 网络io模型 + netty的demo
 
