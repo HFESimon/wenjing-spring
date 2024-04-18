@@ -16,7 +16,9 @@ public class Consumer {
 
         HelloApiService helloApiService = ProxyFactory.getProxy(HelloApiService.class);
 
-        String res = helloApiService.sayHello("wenjing is handsome");
-        System.out.println(res);
+        for (int i = 0; i < 10; i++) {
+            String res = helloApiService.sayHello("wenjing is handsome");
+            System.out.println(res);
+        }
     }
 }

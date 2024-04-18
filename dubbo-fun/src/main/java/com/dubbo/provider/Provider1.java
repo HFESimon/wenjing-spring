@@ -19,7 +19,7 @@ import java.net.UnknownHostException;
  * @since 2024/4/18 12:32 上午
  */
 
-public class Provider {
+public class Provider1 {
 
     public static void main(String[] args) throws UnknownHostException {
 
