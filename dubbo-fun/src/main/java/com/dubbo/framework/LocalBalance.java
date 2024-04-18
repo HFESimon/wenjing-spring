@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class LocalBalance {
 
-    private static URL random(List<URL> list) {
+    public static URL random(List<URL> list) {
         Random random = new Random();
         int n = random.nextInt(list.size());
         return list.get(n);
