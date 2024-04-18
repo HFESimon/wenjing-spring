@@ -27,14 +27,14 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter implements 
     }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public synchronized void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         result = msg.toString();
         notify();
     }
 
     @Override
-    public Object call() throws Exception {
-        context.writeAndFlush(invocation);
+    public synchronized Object call() throws Exception {
+        context.writeAndFlush(this.invocation);
         wait();
         return result;
     }

@@ -14,5 +14,5 @@ public interface HelloApiService {
      * @param name
      * @return
      */
-    public String sayHello(String name);
+    String sayHello(String name);
 }

@@ -45,7 +45,7 @@ public class NettyServer {
                     });
             // netty server start
             ChannelFuture channelFuture = serverBootstrap.bind(host, port).sync();
-
+            System.out.println("netty server is ready...");
             channelFuture.channel().closeFuture().sync();
         } catch (Exception e) {
             e.printStackTrace();

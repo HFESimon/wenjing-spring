@@ -40,6 +40,7 @@ public class ProxyFactory<T> {
                     Protocol protocol = ProtocolFactory.getProtocol();
                     return protocol.send(url, invocation);
                 } catch (Exception e) {
+                    e.printStackTrace();
                     return doMock(invocation);
                 }
             }

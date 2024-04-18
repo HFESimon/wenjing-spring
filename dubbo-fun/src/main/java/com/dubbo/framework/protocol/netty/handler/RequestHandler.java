@@ -23,6 +23,6 @@ public class RequestHandler implements ChannelHandler{
         Method method = clazz.getMethod(invocation.getMethodName(), invocation.getParameterTypes());
         Object result = method.invoke(clazz.newInstance(), invocation.getParameters());
 
-        ctx.writeAndFlush("Netty:" + result);
+        ctx.writeAndFlush("Netty: " + result);
     }
 }

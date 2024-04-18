@@ -50,13 +50,9 @@ public class NettyClient {
                     });
 
             // client start
-            ChannelFuture channelFuture = bootstrap.connect(host, port).sync();
-
-            channelFuture.channel().closeFuture().sync();
+            bootstrap.connect(host, port).sync();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            group.shutdownGracefully();
         }
     }
 
