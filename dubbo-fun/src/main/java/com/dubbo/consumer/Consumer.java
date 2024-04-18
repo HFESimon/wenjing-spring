@@ -16,11 +16,8 @@ public class Consumer {
 
     public static void main(String[] args) {
 
-        Invocation invocation = new Invocation(HelloApiService.class.getName(), "sayHello", new Class[]{String.class}, new Object[]{"wenjing"});
-        NettyClient nettyClient = new NettyClient();
-        String result = nettyClient.send("localhost", 8080, invocation);
-
         HelloApiService helloApiService = ProxyFactory.getProxy(HelloApiService.class);
+
         for (int i = 0; i < 10; i++) {
             String res = helloApiService.sayHello("wenjing is handsome" + i);
             System.out.println(res);

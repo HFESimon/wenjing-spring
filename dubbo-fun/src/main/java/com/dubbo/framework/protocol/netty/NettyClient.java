@@ -33,6 +33,7 @@ public class NettyClient {
 
     public void start(String host, int port) {
         EventLoopGroup group = new NioEventLoopGroup();
+        nettyClientHandler = new NettyClientHandler();
         try {
             Bootstrap bootstrap = new Bootstrap();
 

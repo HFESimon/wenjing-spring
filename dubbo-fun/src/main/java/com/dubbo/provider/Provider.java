@@ -3,7 +3,6 @@ package com.dubbo.provider;
 import com.dubbo.framework.URL;
 import com.dubbo.framework.protocol.common.Protocol;
 import com.dubbo.framework.protocol.common.ProtocolFactory;
-import com.dubbo.framework.protocol.dubbo.DubboProtocol;
 import com.dubbo.framework.register.LocalRegister;
 import com.dubbo.framework.register.ZookeeperRegister;
 import com.dubbo.provider.api.HelloApiService;
