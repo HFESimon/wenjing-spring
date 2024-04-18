@@ -9,10 +9,10 @@ import com.dubbo.provider.api.HelloApiService;
  * @description:
  * @since 2024/4/18 12:33 上午
  */
-public class HelloApiServiceImpl implements HelloApiService {
+public class HelloApiServiceImpl2 implements HelloApiService {
 
     @Override
     public String sayHello(String name) {
-        return "execute api serviceImpl " + name;
+        return "execute api serviceImpl2 " + name;
     }
 }
