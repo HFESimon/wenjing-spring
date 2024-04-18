@@ -1,5 +1,7 @@
 package com.dubbo.provider;
 
+import com.dubbo.provider.api.HelloApiService;
+
 /**
  * @author wenjing.zsm
  * @version 1.0
@@ -10,4 +12,10 @@ package com.dubbo.provider;
 
 public class Provider {
 
+    public static void main(String[] args) {
+
+        String interfaceName = HelloApiService.class.getName();
+
+
+    }
 }
