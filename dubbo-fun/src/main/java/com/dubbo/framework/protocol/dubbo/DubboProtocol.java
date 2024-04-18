@@ -2,7 +2,7 @@ package com.dubbo.framework.protocol.dubbo;
 
 import com.dubbo.framework.URL;
 import com.dubbo.framework.protocol.dto.Invocation;
-import com.dubbo.framework.protocol.common.Protocol;
+import com.dubbo.framework.protocol.factory.Protocol;
 import com.dubbo.framework.protocol.netty.NettyClient;
 import com.dubbo.framework.protocol.netty.NettyServer;
 

@@ -1,4 +1,4 @@
-package com.dubbo.framework.protocol.common;
+package com.dubbo.framework.protocol.factory;
 
 import com.dubbo.framework.URL;
 import com.dubbo.framework.protocol.dto.Invocation;
