@@ -11,10 +11,13 @@ import io.netty.channel.ChannelHandlerContext;
  * @description:
  * @since 2024/4/18 10:51 上午
  */
-public class Task implements Runnable{
+
+public class Task implements Runnable {
 
     private Invocation invocation;
+
     private ChannelHandler channelHandler;
+
     private ChannelHandlerContext ctx;
 
     public Task(Invocation invocation, ChannelHandler channelHandler, ChannelHandlerContext ctx) {
