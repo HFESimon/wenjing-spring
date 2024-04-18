@@ -1,4 +1,4 @@
-package com.dubbo.framework.common;
+package com.dubbo.common;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;

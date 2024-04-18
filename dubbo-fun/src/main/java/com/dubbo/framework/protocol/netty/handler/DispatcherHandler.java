@@ -1,6 +1,6 @@
 package com.dubbo.framework.protocol.netty.handler;
 
-import com.dubbo.framework.common.ThreadPoolFactory;
+import com.dubbo.common.ThreadPoolFactory;
 import com.dubbo.framework.protocol.dto.Invocation;
 import com.dubbo.framework.protocol.netty.task.Task;
 import io.netty.channel.ChannelHandlerContext;
