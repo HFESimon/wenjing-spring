@@ -26,7 +26,7 @@ public class NettyServer {
 
     private static final Integer threadNum = 10;
 
-    public void start(String host, int port) throws InterruptedException {
+    public void start(String host, int port) {
 
         EventLoopGroup bossGroup = new NioEventLoopGroup(1, new DefaultThreadFactory("netty-server-boss", true));
         EventLoopGroup workerGroup = new NioEventLoopGroup(threadNum, new DefaultThreadFactory("netty-server-worker", true));
