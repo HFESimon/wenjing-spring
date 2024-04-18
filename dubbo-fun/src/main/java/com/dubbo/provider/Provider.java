@@ -34,8 +34,6 @@ public class Provider {
 
         Protocol protocol = ProtocolFactory.getProtocol();
         protocol.start(url);
-//        NettyServer nettyServer = new NettyServer();
-//        nettyServer.start(url.getHostName(), url.getPort());
 
         System.out.println(String.format("success, 成功暴露 %s 服务，地址为 %s", interfaceName, url.toString()));
     }
