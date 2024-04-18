@@ -1,6 +1,6 @@
 package com.dubbo.framework.proxy;
 
-import com.dubbo.framework.LocalBalance;
+import com.dubbo.framework.balance.BalanceFactory;
 import com.dubbo.framework.URL;
 import com.dubbo.framework.protocol.factory.ProtocolFactory;
 import com.dubbo.framework.protocol.dto.Invocation;
@@ -32,7 +32,7 @@ public class ProxyFactory<T> {
 
                 try {
                     List<URL> urls = ZookeeperRegister.get(interfaceClass.getName());
-                    URL url = LocalBalance.random(urls);
+                    URL url = BalanceFactory.getBalance().doBalance(urls);
 
                     System.out.println("消费者选择的服务提供者地址是："+ url.toString());
 
