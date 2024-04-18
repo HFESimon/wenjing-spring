@@ -1,10 +1,10 @@
 package com.dubbo.framework.proxy;
 
-import com.dubbo.framework.balance.BalanceFactory;
+import com.dubbo.framework.balance.factory.BalanceFactory;
 import com.dubbo.framework.URL;
 import com.dubbo.framework.protocol.factory.ProtocolFactory;
 import com.dubbo.framework.protocol.dto.Invocation;
-import com.dubbo.framework.protocol.factory.Protocol;
+import com.dubbo.framework.protocol.Protocol;
 import com.dubbo.framework.register.ZookeeperRegister;
 
 import java.lang.reflect.InvocationHandler;

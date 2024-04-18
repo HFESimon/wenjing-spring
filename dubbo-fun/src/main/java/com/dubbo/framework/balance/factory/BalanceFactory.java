@@ -1,5 +1,6 @@
-package com.dubbo.framework.balance;
+package com.dubbo.framework.balance.factory;
 
+import com.dubbo.framework.balance.Balance;
 import com.dubbo.framework.balance.impl.AverageBalance;
 import com.dubbo.framework.balance.impl.RandomBalance;
 

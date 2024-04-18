@@ -1,5 +1,6 @@
 package com.dubbo.framework.protocol.factory;
 
+import com.dubbo.framework.protocol.Protocol;
 import com.dubbo.framework.protocol.dubbo.DubboProtocol;
 
 /**

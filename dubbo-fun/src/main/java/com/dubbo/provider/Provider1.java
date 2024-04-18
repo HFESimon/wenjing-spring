@@ -1,7 +1,7 @@
 package com.dubbo.provider;
 
 import com.dubbo.framework.URL;
-import com.dubbo.framework.protocol.factory.Protocol;
+import com.dubbo.framework.protocol.Protocol;
 import com.dubbo.framework.protocol.factory.ProtocolFactory;
 import com.dubbo.framework.register.LocalRegister;
 import com.dubbo.framework.register.ZookeeperRegister;
