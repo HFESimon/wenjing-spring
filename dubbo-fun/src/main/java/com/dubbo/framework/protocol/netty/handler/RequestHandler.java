@@ -1,6 +1,6 @@
 package com.dubbo.framework.protocol.netty.handler;
 
-import com.dubbo.framework.protocol.Invocation;
+import com.dubbo.framework.protocol.dto.Invocation;
 import com.dubbo.framework.register.LocalRegister;
 import io.netty.channel.ChannelHandlerContext;
 

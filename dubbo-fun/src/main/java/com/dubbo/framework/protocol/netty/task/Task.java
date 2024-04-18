@@ -1,6 +1,6 @@
 package com.dubbo.framework.protocol.netty.task;
 
-import com.dubbo.framework.protocol.Invocation;
+import com.dubbo.framework.protocol.dto.Invocation;
 import com.dubbo.framework.protocol.netty.handler.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 

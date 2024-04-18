@@ -2,8 +2,10 @@ package com.dubbo.framework.proxy;
 
 import com.dubbo.framework.LocalBalance;
 import com.dubbo.framework.URL;
-import com.dubbo.framework.protocol.Invocation;
-import com.dubbo.framework.protocol.netty.NettyClient;
+import com.dubbo.framework.protocol.common.ProtocolFactory;
+import com.dubbo.framework.protocol.dto.Invocation;
+import com.dubbo.framework.protocol.common.Protocol;
+import com.dubbo.framework.protocol.dubbo.DubboProtocol;
 import com.dubbo.framework.register.ZookeeperRegister;
 
 import java.lang.reflect.InvocationHandler;
@@ -30,14 +32,13 @@ public class ProxyFactory<T> {
                 Invocation invocation = new Invocation(interfaceClass.getName(), method.getName(), method.getParameterTypes(), args);
 
                 try {
-                    NettyClient nettyClient = new NettyClient();
-
                     List<URL> urls = ZookeeperRegister.get(interfaceClass.getName());
                     URL url = LocalBalance.random(urls);
 
                     System.out.println("消费者选择的服务提供者地址是："+ url.toString());
 
-                    return nettyClient.send(url.getHostName(), url.getPort(), invocation);
+                    Protocol protocol = ProtocolFactory.getProtocol();
+                    return protocol.send(url, invocation);
                 } catch (Exception e) {
                     return doMock(invocation);
                 }

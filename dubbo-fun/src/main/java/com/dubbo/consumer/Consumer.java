@@ -1,6 +1,6 @@
 package com.dubbo.consumer;
 
-import com.dubbo.framework.protocol.Invocation;
+import com.dubbo.framework.protocol.dto.Invocation;
 import com.dubbo.framework.protocol.netty.NettyClient;
 import com.dubbo.framework.proxy.ProxyFactory;
 import com.dubbo.provider.api.HelloApiService;
@@ -22,7 +22,7 @@ public class Consumer {
 
         HelloApiService helloApiService = ProxyFactory.getProxy(HelloApiService.class);
         for (int i = 0; i < 10; i++) {
-            String res = helloApiService.sayHello("wenjing hello");
+            String res = helloApiService.sayHello("wenjing is handsome" + i);
             System.out.println(res);
         }
     }

@@ -1,7 +1,9 @@
 package com.dubbo.provider;
 
 import com.dubbo.framework.URL;
-import com.dubbo.framework.protocol.netty.NettyServer;
+import com.dubbo.framework.protocol.common.Protocol;
+import com.dubbo.framework.protocol.common.ProtocolFactory;
+import com.dubbo.framework.protocol.dubbo.DubboProtocol;
 import com.dubbo.framework.register.LocalRegister;
 import com.dubbo.framework.register.ZookeeperRegister;
 import com.dubbo.provider.api.HelloApiService;
@@ -25,11 +27,15 @@ public class Provider {
         String interfaceName = HelloApiService.class.getName();
         URL url = new URL(InetAddress.getLocalHost().getHostAddress(), 8081);
 
+        // 本地注册 注册处理逻辑实现类
         LocalRegister.register(interfaceName, HelloApiServiceImpl.class);
+        // 注册到注册中心 注册服务的 ip和端口
         ZookeeperRegister.register(interfaceName, url);
 
-        NettyServer nettyServer = new NettyServer();
-        nettyServer.start(url.getHostName(), url.getPort());
+        Protocol protocol = ProtocolFactory.getProtocol();
+        protocol.start(url);
+//        NettyServer nettyServer = new NettyServer();
+//        nettyServer.start(url.getHostName(), url.getPort());
 
         System.out.println(String.format("success, 成功暴露 %s 服务，地址为 %s", interfaceName, url.toString()));
     }
