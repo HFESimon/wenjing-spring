@@ -1,7 +1,5 @@
 package com.dubbo.framework.protocol.invoker;
 
-import com.dubbo.framework.protocol.dto.Invocation;
-
 /**
  * @author wenjing.zsm
  * @version 1.0

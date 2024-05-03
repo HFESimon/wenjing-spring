@@ -1,7 +1,7 @@
 package com.dubbo.framework.proxy;
 
 import com.dubbo.framework.balance.invoker.ClusterInvoker;
-import com.dubbo.framework.protocol.dto.Invocation;
+import com.dubbo.framework.protocol.invoker.Invocation;
 import com.dubbo.framework.protocol.invoker.Invoker;
 
 import java.lang.reflect.InvocationHandler;

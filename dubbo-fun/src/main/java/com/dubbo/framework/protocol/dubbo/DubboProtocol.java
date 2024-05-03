@@ -4,7 +4,7 @@ import com.dubbo.framework.URL;
 import com.dubbo.framework.protocol.Protocol;
 import com.dubbo.framework.protocol.dubbo.invoker.DubboInvoker;
 import com.dubbo.framework.protocol.invoker.Invoker;
-import com.dubbo.framework.protocol.netty.NettyServer;
+import com.dubbo.framework.protocol.dubbo.netty.NettyServer;
 import com.dubbo.framework.register.LocalRegister;
 import com.dubbo.framework.register.ZookeeperRegister;
 

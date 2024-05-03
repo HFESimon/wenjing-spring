@@ -1,8 +1,8 @@
-package com.dubbo.framework.protocol.netty;
+package com.dubbo.framework.protocol.dubbo.netty;
 
 import com.dubbo.common.ThreadPoolFactory;
-import com.dubbo.framework.protocol.dto.Invocation;
-import com.dubbo.framework.protocol.netty.handler.NettyClientHandler;
+import com.dubbo.framework.protocol.invoker.Invocation;
+import com.dubbo.framework.protocol.dubbo.netty.handler.NettyClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;

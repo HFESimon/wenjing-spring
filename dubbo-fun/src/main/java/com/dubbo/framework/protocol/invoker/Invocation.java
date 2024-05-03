@@ -1,4 +1,4 @@
-package com.dubbo.framework.protocol.dto;
+package com.dubbo.framework.protocol.invoker;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

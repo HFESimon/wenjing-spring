@@ -2,6 +2,7 @@ package com.dubbo.framework.protocol.factory;
 
 import com.dubbo.framework.protocol.Protocol;
 import com.dubbo.framework.protocol.dubbo.DubboProtocol;
+import com.dubbo.framework.protocol.http.HttpProtocol;
 
 /**
  * @author wenjing.zsm
@@ -23,7 +24,7 @@ public class ProtocolFactory {
                 return new DubboProtocol();
             case "http":
                 // 没实现也用这个吧
-                return new DubboProtocol();
+                return new HttpProtocol();
             default:
                 break;
         }

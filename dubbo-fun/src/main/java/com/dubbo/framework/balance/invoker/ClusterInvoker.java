@@ -4,7 +4,7 @@ import com.dubbo.framework.URL;
 import com.dubbo.framework.balance.BalanceEnum;
 import com.dubbo.framework.balance.factory.BalanceFactory;
 import com.dubbo.framework.protocol.Protocol;
-import com.dubbo.framework.protocol.dto.Invocation;
+import com.dubbo.framework.protocol.invoker.Invocation;
 import com.dubbo.framework.protocol.factory.ProtocolFactory;
 import com.dubbo.framework.protocol.invoker.Invoker;
 import com.dubbo.framework.register.ZookeeperRegister;

@@ -1,9 +1,9 @@
 package com.dubbo.framework.protocol.dubbo.invoker;
 
 import com.dubbo.framework.URL;
-import com.dubbo.framework.protocol.dto.Invocation;
+import com.dubbo.framework.protocol.invoker.Invocation;
 import com.dubbo.framework.protocol.invoker.Invoker;
-import com.dubbo.framework.protocol.netty.NettyClient;
+import com.dubbo.framework.protocol.dubbo.netty.NettyClient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
