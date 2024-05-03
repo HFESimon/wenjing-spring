@@ -24,7 +24,6 @@ public class DubboProtocol implements Protocol {
         LocalRegister.register(url.getInterfaceName(), url.getImplClass());
         // 注册到注册中心 注册服务的 ip和端口
         ZookeeperRegister.register(url.getInterfaceName(), url);
-        System.out.printf("success, 成功暴露 %s 服务，地址为 %s%n", url.getInterfaceName(), url.toString());
 
         // 启动netty服务
         new NettyServer().start(url.getHostname(), url.getPort());
