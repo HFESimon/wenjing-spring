@@ -17,7 +17,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class URL {
 
-    private String hostName;
+    private String protocol;
+
+    private String hostname;
 
     private Integer port;
+
+    private String interfaceName;
+
+    private Class<?> implClass;
 }

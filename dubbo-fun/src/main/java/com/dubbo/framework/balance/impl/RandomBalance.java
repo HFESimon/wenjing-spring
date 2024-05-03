@@ -2,6 +2,7 @@ package com.dubbo.framework.balance.impl;
 
 import com.dubbo.framework.URL;
 import com.dubbo.framework.balance.Balance;
+import com.dubbo.framework.protocol.invoker.Invoker;
 
 import java.util.List;
 import java.util.Random;
@@ -17,9 +18,9 @@ import java.util.Random;
 public class RandomBalance implements Balance {
 
     @Override
-    public URL doBalance(List<URL> urls) {
+    public Invoker doBalance(List<Invoker> invokers) {
         Random random = new Random();
-        int n = random.nextInt(urls.size());
-        return urls.get(n);
+        int n = random.nextInt(invokers.size());
+        return invokers.get(n);
     }
 }

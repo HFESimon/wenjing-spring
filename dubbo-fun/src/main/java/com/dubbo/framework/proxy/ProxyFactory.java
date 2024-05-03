@@ -1,16 +1,12 @@
 package com.dubbo.framework.proxy;
 
-import com.dubbo.framework.balance.factory.BalanceFactory;
-import com.dubbo.framework.URL;
-import com.dubbo.framework.protocol.factory.ProtocolFactory;
+import com.dubbo.framework.balance.invoker.ClusterInvoker;
 import com.dubbo.framework.protocol.dto.Invocation;
-import com.dubbo.framework.protocol.Protocol;
-import com.dubbo.framework.register.ZookeeperRegister;
+import com.dubbo.framework.protocol.invoker.Invoker;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.List;
 
 /**
  * @author wenjing.zsm
@@ -31,13 +27,8 @@ public class ProxyFactory<T> {
                 Invocation invocation = new Invocation(interfaceClass.getName(), method.getName(), method.getParameterTypes(), args);
 
                 try {
-                    List<URL> urls = ZookeeperRegister.get(interfaceClass.getName());
-                    URL url = BalanceFactory.getBalance().doBalance(urls);
-
-                    System.out.println("消费者选择的服务提供者地址是："+ url.toString());
-
-                    Protocol protocol = ProtocolFactory.getProtocol();
-                    return protocol.send(url, invocation);
+                    Invoker invoker = ClusterInvoker.join(interfaceClass);
+                    return invoker.invoke(invocation);
                 } catch (Exception e) {
                     e.printStackTrace();
                     return doMock(invocation);

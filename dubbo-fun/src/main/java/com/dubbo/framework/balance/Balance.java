@@ -1,6 +1,7 @@
 package com.dubbo.framework.balance;
 
 import com.dubbo.framework.URL;
+import com.dubbo.framework.protocol.invoker.Invoker;
 
 import java.util.List;
 
@@ -13,5 +14,5 @@ import java.util.List;
  */
 public interface Balance {
 
-    URL doBalance(List<URL> urls);
+    Invoker doBalance(List<Invoker> invokers);
 }

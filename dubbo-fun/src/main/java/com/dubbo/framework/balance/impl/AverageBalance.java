@@ -2,6 +2,7 @@ package com.dubbo.framework.balance.impl;
 
 import com.dubbo.framework.URL;
 import com.dubbo.framework.balance.Balance;
+import com.dubbo.framework.protocol.invoker.Invoker;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class AverageBalance implements Balance {
     private static int average = 0;
 
     @Override
-    public URL doBalance(List<URL> urls) {
-        return urls.get(average++ % urls.size());
+    public Invoker doBalance(List<Invoker> invokers) {
+        return invokers.get(average++ % invokers.size());
     }
 }

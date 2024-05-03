@@ -1,6 +1,7 @@
 package com.dubbo.framework.balance.factory;
 
 import com.dubbo.framework.balance.Balance;
+import com.dubbo.framework.balance.BalanceEnum;
 import com.dubbo.framework.balance.impl.AverageBalance;
 import com.dubbo.framework.balance.impl.RandomBalance;
 
@@ -13,17 +14,12 @@ import com.dubbo.framework.balance.impl.RandomBalance;
  */
 public class BalanceFactory {
 
-    public static Balance getBalance() {
-        String balance = System.getProperty("balance");
-
-        if (balance == null || balance.length() == 0) {
-            balance = "average";
-        }
+    public static Balance getBalance(BalanceEnum balance) {
 
         switch (balance) {
-            case "random":
+            case RANDOM:
                 return new RandomBalance();
-            case "average":
+            case AVERAGE:
                 return new AverageBalance();
             default:
                 break;

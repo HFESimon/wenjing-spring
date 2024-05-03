@@ -1,7 +1,7 @@
 package com.dubbo.framework.protocol;
 
 import com.dubbo.framework.URL;
-import com.dubbo.framework.protocol.dto.Invocation;
+import com.dubbo.framework.protocol.invoker.Invoker;
 
 /**
  * @author wenjing.zsm
@@ -13,17 +13,15 @@ import com.dubbo.framework.protocol.dto.Invocation;
 public interface Protocol {
 
     /**
-     * 启动服务
+     * 服务导出
      * @param url
      */
-    void start(URL url);
-
+    void export(URL url);
 
     /**
-     * 发送请求
+     * 服务引入
      * @param url
-     * @param invocation
      * @return
      */
-    String send(URL url, Invocation invocation);
+    Invoker refer(URL url);
 }

@@ -12,8 +12,8 @@ import com.dubbo.framework.protocol.dubbo.DubboProtocol;
  */
 public class ProtocolFactory {
 
-    public static Protocol getProtocol() {
-        String name = System.getProperty("protocol");
+    public static Protocol getProtocol(String name) {
+
         if (name == null || name.length() == 0) {
             name = "dubbo";
         }

@@ -1,10 +1,12 @@
 package com.dubbo.framework.protocol.dubbo;
 
 import com.dubbo.framework.URL;
-import com.dubbo.framework.protocol.dto.Invocation;
 import com.dubbo.framework.protocol.Protocol;
-import com.dubbo.framework.protocol.netty.NettyClient;
+import com.dubbo.framework.protocol.dubbo.invoker.DubboInvoker;
+import com.dubbo.framework.protocol.invoker.Invoker;
 import com.dubbo.framework.protocol.netty.NettyServer;
+import com.dubbo.framework.register.LocalRegister;
+import com.dubbo.framework.register.ZookeeperRegister;
 
 /**
  * @author wenjing.zsm
@@ -17,14 +19,19 @@ import com.dubbo.framework.protocol.netty.NettyServer;
 public class DubboProtocol implements Protocol {
 
     @Override
-    public void start(URL url) {
-        NettyServer server = new NettyServer();
-        server.start(url.getHostName(), url.getPort());
+    public void export(URL url) {
+        // 本地注册 注册处理逻辑实现类
+        LocalRegister.register(url.getInterfaceName(), url.getImplClass());
+        // 注册到注册中心 注册服务的 ip和端口
+        ZookeeperRegister.register(url.getInterfaceName(), url);
+        System.out.printf("success, 成功暴露 %s 服务，地址为 %s%n", url.getInterfaceName(), url.toString());
+
+        // 启动netty服务
+        new NettyServer().start(url.getHostname(), url.getPort());
     }
 
     @Override
-    public String send(URL url, Invocation invocation) {
-        NettyClient client = new NettyClient();
-        return client.send(url.getHostName(), url.getPort(), invocation);
+    public Invoker refer(URL url) {
+        return new DubboInvoker(url);
     }
 }

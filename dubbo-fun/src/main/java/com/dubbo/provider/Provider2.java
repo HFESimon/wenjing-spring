@@ -6,6 +6,7 @@ import com.dubbo.framework.protocol.factory.ProtocolFactory;
 import com.dubbo.framework.register.LocalRegister;
 import com.dubbo.framework.register.ZookeeperRegister;
 import com.dubbo.provider.api.HelloApiService;
+import com.dubbo.provider.impl.HelloApiServiceImpl1;
 import com.dubbo.provider.impl.HelloApiServiceImpl2;
 
 import java.net.InetAddress;
@@ -22,17 +23,11 @@ public class Provider2 {
 
     public static void main(String[] args) throws UnknownHostException {
 
-        String interfaceName = HelloApiService.class.getName();
-        URL url = new URL(InetAddress.getLocalHost().getHostAddress(), 8082);
+        URL url = new URL("dubbo", InetAddress.getLocalHost().getHostAddress(), 8082,
+                HelloApiService.class.getName(), HelloApiServiceImpl2.class);
 
-        // 本地注册 注册处理逻辑实现类
-        LocalRegister.register(interfaceName, HelloApiServiceImpl2.class);
-        // 注册到注册中心 注册服务的 ip和端口
-        ZookeeperRegister.register(interfaceName, url);
+        Protocol protocol = ProtocolFactory.getProtocol(url.getProtocol());
 
-        Protocol protocol = ProtocolFactory.getProtocol();
-        protocol.start(url);
-
-        System.out.println(String.format("success, 成功暴露 %s 服务，地址为 %s", interfaceName, url.toString()));
+        protocol.export(url);
     }
 }
