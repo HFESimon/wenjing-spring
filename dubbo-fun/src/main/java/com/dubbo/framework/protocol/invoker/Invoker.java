@@ -10,7 +10,7 @@ package com.dubbo.framework.protocol.invoker;
 public interface Invoker {
 
     /**
-     *
+     * do-rpc-invoke
      * @param invocation
      * @return
      */
