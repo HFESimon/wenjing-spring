@@ -15,6 +15,7 @@
         <module>rocketmq-fun</module>
         <module>thread-fun</module>
         <module>Dubbo-fun</module>
+        <module>algorithm-fun</module>
     </modules>
 
     <properties>
