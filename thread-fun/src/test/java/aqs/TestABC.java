@@ -1,6 +1,6 @@
 package aqs;
 
-import com.aqs.LockConditionABC;
+import com.practice.printABC.aqs.LockConditionABC;
 import org.junit.Test;
 
 /**

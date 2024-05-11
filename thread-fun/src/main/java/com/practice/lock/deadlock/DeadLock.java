@@ -1,4 +1,4 @@
-package com.deadlock;
+package com.practice.lock.deadlock;
 
 /**
  * @author wenjing.zsm

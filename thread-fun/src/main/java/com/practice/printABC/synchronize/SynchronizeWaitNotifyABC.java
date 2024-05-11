@@ -1,4 +1,4 @@
-package com.synchronize;
+package com.practice.printABC.synchronize;
 
 /**
  * @author wenjing.zsm

@@ -1,4 +1,4 @@
-package com.blockingqueue;
+package com.practice.printABC.blockingqueue;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;

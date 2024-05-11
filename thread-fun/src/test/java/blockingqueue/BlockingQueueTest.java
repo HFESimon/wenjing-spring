@@ -1,6 +1,6 @@
 package blockingqueue;
 
-import com.blockingqueue.BlockingQueueTestABC;
+import com.practice.printABC.blockingqueue.BlockingQueueTestABC;
 import org.junit.Test;
 
 /**

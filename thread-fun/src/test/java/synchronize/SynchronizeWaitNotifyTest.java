@@ -1,6 +1,6 @@
 package synchronize;
 
-import com.synchronize.SynchronizeWaitNotifyABC;
+import com.practice.printABC.synchronize.SynchronizeWaitNotifyABC;
 import org.junit.Test;
 
 /**

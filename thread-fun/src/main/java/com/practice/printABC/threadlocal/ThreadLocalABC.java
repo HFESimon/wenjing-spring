@@ -1,4 +1,4 @@
-package com.thread;
+package com.practice.printABC.threadlocal;
 
 /**
  * @author wenjing.zsm
