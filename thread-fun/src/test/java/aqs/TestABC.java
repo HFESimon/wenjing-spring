@@ -1,5 +1,6 @@
 package aqs;
 
+import com.practice.printABC.aqs.LockCondition;
 import com.practice.printABC.aqs.LockConditionABC;
 import org.junit.Test;
 
@@ -24,6 +25,21 @@ public class TestABC {
 
         new Thread(() -> {
             LockConditionABC.printC();
+        }, "thread_c").start();
+    }
+
+    @Test
+    public void newTestABC() {
+        LockCondition condition = new LockCondition();
+
+        new Thread(() -> {
+            condition.printA();
+        }, "thread_a").start();
+        new Thread(() -> {
+            condition.printB();
+        }, "thread_b").start();
+        new Thread(() -> {
+            condition.printC();
         }, "thread_c").start();
     }
 
