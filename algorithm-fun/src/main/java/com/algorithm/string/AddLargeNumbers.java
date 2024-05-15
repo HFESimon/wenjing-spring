@@ -51,14 +51,6 @@ public class AddLargeNumbers {
         return new String(ans_arr);
     }
 
-    public static void main(String[] args) {
-        AddLargeNumbers add = new AddLargeNumbers();
-        String a = "1242143214123412222421432";
-        String b = "5342524524354133433323433";
-        System.out.println(add.plus(a, b));
-    }
-
-
     void reverse(char[] arr, int lo, int hi) {
         while(lo < hi) {
             swap(arr, lo++, hi--);
