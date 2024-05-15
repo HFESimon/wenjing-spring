@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
  * @description:
  * @since 2024/5/15 9:55 上午
  */
-public class LRUCache <E, U> {
+public class LRUCache<E, U> {
 
     LinkedHashMap<E, U> cache;
     int capacity;
@@ -24,7 +24,7 @@ public class LRUCache <E, U> {
             cache.put(key, value);
             refresh(key);
         }
-        if(cache.size() >= capacity) {
+        if (cache.size() >= capacity) {
             cache.remove(cache.keySet().iterator().next());
             cache.put(key, value);
         }
