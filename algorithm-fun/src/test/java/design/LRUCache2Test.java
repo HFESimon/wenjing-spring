@@ -1,6 +1,5 @@
 package design;
 
-import com.algorithm.design.LRUCache;
 import com.algorithm.design.LRUCache2;
 import org.junit.Test;
 
